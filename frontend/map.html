@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte des Souvenirs - MaqzBenz</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/map.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">MaqzBenz</div>
+            
+            <ul class="nav-links">
+                <li><a href="/index.html">Accueil</a></li>
+                <li><a href="/tech.html">Tech</a></li>
+                <li><a href="/sport.html">Sport</a></li>
+                <li><a href="/vacances.html">Vacances</a></li>
+                <li><a href="/map.html">Carte</a></li>
+                <li><a href="#" id="user-menu-container"></a></li>
+            </ul>
+            
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Map Container -->
+    <div class="map-container">
+        <div id="map"></div>
+        
+        <!-- Sidebar -->
+        <aside class="map-sidebar">
+            <div class="sidebar-header">
+                <h2>Souvenirs</h2>
+                <button class="sidebar-toggle">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Filters -->
+            <div class="map-filters">
+                <div class="filter-group">
+                    <label for="year-filter">Année</label>
+                    <select id="year-filter" class="filter-select">
+                        <option value="all">Toutes les années</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="type-filter">Type</label>
+                    <select id="type-filter" class="filter-select">
+                        <option value="all">Tous les types</option>
+                        <option value="vacation">Vacances</option>
+                        <option value="sport">Sport</option>
+                        <option value="tech">Tech</option>
+                        <option value="other">Autre</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Memory List -->
+            <div class="memory-list">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </aside>
+        
+        <!-- Add Memory Button (Admin Only) -->
+        <button class="add-memory-fab" title="Ajouter un souvenir">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/map.js"></script>
+    <script>
+        let memoryMap;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize user menu
+            const userMenuContainer = document.getElementById('user-menu-container');
+            if (userMenuContainer) {
+                new MaqzbenzWeb.UserMenu(userMenuContainer);
+            }
+            
+            // Initialize map
+            memoryMap = new MaqzbenzWeb.MemoryMap('map');
+        });
+    </script>
+</body>
+</html>

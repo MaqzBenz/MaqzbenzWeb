@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Équipement sportif - Vélo, running et caméra 360° - MaqzBenz">
+    <title>Équipement Sportif - MaqzBenz</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">MaqzBenz</div>
+            
+            <ul class="nav-links">
+                <li><a href="/index.html">Accueil</a></li>
+                <li><a href="/tech.html">Tech</a></li>
+                <li><a href="/sport.html" class="active">Sport</a></li>
+                <li><a href="/vacances.html">Vacances</a></li>
+                <li><a href="/map.html">Carte</a></li>
+                <li><a href="#" id="user-menu-container"></a></li>
+            </ul>
+            
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Équipement Sportif</h1>
+                <p>Découvrez mon équipement pour le vélo et la course à pied. Performances, confort et technologie au service de la passion du sport.</p>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="section" style="padding-top: 2rem; padding-bottom: 1rem;">
+            <div class="container">
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-primary filter-btn active" data-filter="all">
+                        <i class="fas fa-th"></i> Tout
+                    </button>
+                    <button class="btn btn-outline filter-btn" data-filter="velo">
+                        <i class="fas fa-bicycle"></i> Vélo
+                    </button>
+                    <button class="btn btn-outline filter-btn" data-filter="running">
+                        <i class="fas fa-running"></i> Running
+                    </button>
+                    <button class="btn btn-outline filter-btn" data-filter="camera">
+                        <i class="fas fa-camera"></i> Caméra
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sports Equipment Section -->
+        <section class="section" style="padding-top: 1rem;">
+            <div class="container">
+                <div class="grid grid-3" id="equipment-grid">
+                    <!-- Bike Card -->
+                    <div class="card fade-in-up equipment-item" data-category="velo">
+                        <div class="card-image" style="background: linear-gradient(135deg, #10b981, #06b6d4); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-bicycle" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Vélo Route</h3>
+                        <p class="card-description">
+                            Vélo de route haut de gamme en carbone avec groupe Shimano Ultegra Di2, roues carbone et capteurs de puissance intégrés.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary); margin-right: 0.5rem;">
+                                <i class="fas fa-weight"></i> 7.2kg
+                            </span>
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-cog"></i> Di2
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- GPS Bike Computer -->
+                    <div class="card fade-in-up equipment-item" data-category="velo" style="animation-delay: 0.1s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #06b6d4, #3b82f6); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-map-marked-alt" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">GPS Vélo</h3>
+                        <p class="card-description">
+                            Compteur GPS avec écran couleur tactile, navigation turn-by-turn, capteurs ANT+ et Bluetooth, autonomie 30h.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-satellite"></i> GPS
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Power Meter -->
+                    <div class="card fade-in-up equipment-item" data-category="velo" style="animation-delay: 0.2s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #8b5cf6, #6366f1); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-bolt" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Capteur de Puissance</h3>
+                        <p class="card-description">
+                            Capteur de puissance précision +/- 1%, mesure bilatérale, compatible ANT+ et Bluetooth, analyse avancée des performances.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-chart-line"></i> Watts
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Running Shoes -->
+                    <div class="card fade-in-up equipment-item" data-category="running" style="animation-delay: 0.3s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #f97316, #eab308); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-shoe-prints" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Chaussures Running</h3>
+                        <p class="card-description">
+                            Chaussures de running avec amorti réactif, plaque carbone, drop 8mm et technologie anti-pronation pour longues distances.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-feather"></i> 220g
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- GPS Running Watch -->
+                    <div class="card fade-in-up equipment-item" data-category="running" style="animation-delay: 0.4s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-clock" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Montre GPS Running</h3>
+                        <p class="card-description">
+                            Montre GPS multisport avec cardio optique, oxymètre de pouls, cartographie, analyse de performance et autonomie 50h.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary); margin-right: 0.5rem;">
+                                <i class="fas fa-heartbeat"></i> Cardio
+                            </span>
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-battery-full"></i> 50h
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Heart Rate Monitor -->
+                    <div class="card fade-in-up equipment-item" data-category="running" style="animation-delay: 0.5s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #ef4444, #ec4899); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-heartbeat" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Ceinture Cardio</h3>
+                        <p class="card-description">
+                            Ceinture thoracique précision maximale, capteur ANT+ et Bluetooth, confortable et résistante à l'eau IPX7.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-heart"></i> BPM
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Insta360 Camera -->
+                    <div class="card fade-in-up equipment-item" data-category="camera" style="animation-delay: 0.6s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #8b5cf6, #ec4899); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-video" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Insta360 X3</h3>
+                        <p class="card-description">
+                            Caméra 360° 5.7K avec stabilisation FlowState, écran tactile, étanche 10m et mode invisible selfie stick pour parcours sportifs.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary); margin-right: 0.5rem;">
+                                <i class="fas fa-circle-notch"></i> 360°
+                            </span>
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-film"></i> 5.7K
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Camera Accessories -->
+                    <div class="card fade-in-up equipment-item" data-category="camera" style="animation-delay: 0.7s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-tools" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Accessoires Caméra</h3>
+                        <p class="card-description">
+                            Kit complet: perche invisible 3m, fixations casque/vélo/poitrine, batteries supplémentaires et carte SD 256GB haute vitesse.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-box"></i> Kit
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Hydration Pack -->
+                    <div class="card fade-in-up equipment-item" data-category="running velo" style="animation-delay: 0.8s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #3b82f6, #06b6d4); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-tint" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Sac d'Hydratation</h3>
+                        <p class="card-description">
+                            Gilet d'hydratation ultra-léger avec poche 1.5L, compartiments pour nutrition et téléphone, réflecteurs 360° pour visibilité.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-water"></i> 1.5L
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section" style="background: var(--bg-secondary);">
+            <div class="container">
+                <h2 class="text-center mb-xl">Statistiques Sportives</h2>
+                <div class="grid grid-3">
+                    <div class="card text-center">
+                        <div style="font-size: 3rem; color: var(--accent-primary); font-weight: 700;">12,450</div>
+                        <h3 class="card-title" style="margin-top: 1rem;">Kilomètres Vélo</h3>
+                        <p class="card-description">Distance totale parcourue en 2024</p>
+                    </div>
+
+                    <div class="card text-center">
+                        <div style="font-size: 3rem; color: var(--accent-primary); font-weight: 700;">1,280</div>
+                        <h3 class="card-title" style="margin-top: 1rem;">Kilomètres Course</h3>
+                        <p class="card-description">Total course à pied cette année</p>
+                    </div>
+
+                    <div class="card text-center">
+                        <div style="font-size: 3rem; color: var(--accent-primary); font-weight: 700;">145</div>
+                        <h3 class="card-title" style="margin-top: 1rem;">Parcours 360°</h3>
+                        <p class="card-description">Vidéos capturées avec Insta360</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MaqzBenz</h4>
+                <p style="color: var(--text-secondary);">Portfolio personnel - Tech, Sport & Voyages</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="/index.html">Accueil</a></li>
+                    <li><a href="/tech.html">Tech</a></li>
+                    <li><a href="/sport.html">Sport</a></li>
+                    <li><a href="/vacances.html">Vacances</a></li>
+                    <li><a href="/map.html">Carte</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:contact@maqzbenz.com">contact@maqzbenz.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> MaqzBenz. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/auth.js"></script>
+    <script>
+        // Initialize user menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('user-menu-container');
+            if (container) {
+                new MaqzbenzWeb.UserMenu(container);
+            }
+
+            // Category filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const equipmentItems = document.querySelectorAll('.equipment-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.dataset.filter;
+                    
+                    // Update active button
+                    filterBtns.forEach(b => {
+                        b.classList.remove('btn-primary', 'active');
+                        b.classList.add('btn-outline');
+                    });
+                    btn.classList.remove('btn-outline');
+                    btn.classList.add('btn-primary', 'active');
+
+                    // Filter items
+                    equipmentItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category.includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

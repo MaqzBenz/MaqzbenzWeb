@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewer 360° - MaqzBenz</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    
+    <!-- Pannellum CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/viewer360.css">
+</head>
+<body>
+    <div class="viewer-container">
+        <!-- Panorama Viewer -->
+        <div id="panorama"></div>
+        
+        <!-- Loading State -->
+        <div class="viewer-loading" id="viewer-loading">
+            <div class="spinner"></div>
+            <p class="viewer-loading-text">Chargement du parcours 360°...</p>
+        </div>
+        
+        <!-- Top Bar -->
+        <div class="viewer-top-bar">
+            <h1 class="viewer-title">Chargement...</h1>
+            <div class="viewer-nav-controls">
+                <a href="/map.html" class="viewer-btn">
+                    <i class="fas fa-map"></i> Carte
+                </a>
+                <a href="/index.html" class="viewer-btn">
+                    <i class="fas fa-home"></i> Accueil
+                </a>
+            </div>
+        </div>
+        
+        <!-- Mini Map -->
+        <div class="mini-map-container">
+            <div class="mini-map-header">
+                <span class="mini-map-title">Position GPS</span>
+                <button class="mini-map-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div id="miniMap"></div>
+        </div>
+        
+        <!-- Stats Panel -->
+        <div class="stats-panel">
+            <div class="stats-header">
+                <span class="stats-title">Statistiques</span>
+                <button class="stats-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-label">Vitesse</div>
+                    <div class="stat-value">
+                        <span id="current-speed">0</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Altitude</div>
+                    <div class="stat-value">
+                        <span id="current-altitude">0</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Distance</div>
+                    <div class="stat-value">
+                        <span id="total-distance">0</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Dénivelé+</div>
+                    <div class="stat-value">
+                        <span id="elevation-gain">0</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Vitesse max</div>
+                    <div class="stat-value">
+                        <span id="max-speed">0</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Altitude max</div>
+                    <div class="stat-value">
+                        <span id="max-altitude">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Timeline Controls -->
+        <div class="timeline-container">
+            <div class="timeline-playback">
+                <button class="play-btn">
+                    <i class="fas fa-play"></i>
+                </button>
+                <div class="timeline-info">
+                    <div class="timeline-time">0:00 / 0:00</div>
+                    <div class="timeline-distance">0 km / 0 km</div>
+                </div>
+            </div>
+            
+            <div class="timeline-slider-container">
+                <div class="timeline-track">
+                    <div class="timeline-progress"></div>
+                </div>
+                <input type="range" class="timeline-slider" min="0" max="100" value="0" step="0.1">
+            </div>
+            
+            <div class="speed-controls">
+                <button class="speed-btn active" data-speed="0.5">0.5x</button>
+                <button class="speed-btn" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="1.5">1.5x</button>
+                <button class="speed-btn" data-speed="2">2x</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/gpxPlayer.js"></script>
+    <script src="/js/viewer360.js"></script>
+    <script>
+        let viewer360;
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Get tour ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const tourId = urlParams.get('id');
+            
+            if (!tourId) {
+                MaqzbenzWeb.Toast.error('ID de parcours manquant');
+                setTimeout(() => window.location.href = '/index.html', 2000);
+                return;
+            }
+            
+            // Initialize viewer
+            try {
+                viewer360 = new MaqzbenzWeb.Viewer360('panorama');
+                await viewer360.init(tourId);
+                
+                // Hide loading
+                document.getElementById('viewer-loading').style.display = 'none';
+            } catch (error) {
+                console.error('Error initializing viewer:', error);
+                MaqzbenzWeb.Toast.error('Erreur lors du chargement du viewer');
+                setTimeout(() => window.location.href = '/index.html', 3000);
+            }
+        });
+    </script>
+</body>
+</html>

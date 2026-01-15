@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard administrateur - MaqzBenz">
+    <title>Admin Dashboard - MaqzBenz</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .admin-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: calc(100vh - 80px - 200px);
+        }
+
+        .admin-sidebar {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .admin-sidebar h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .admin-nav {
+            list-style: none;
+        }
+
+        .admin-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            transition: all var(--transition-base);
+            text-decoration: none;
+        }
+
+        .admin-nav a:hover,
+        .admin-nav a.active {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent-primary);
+        }
+
+        .admin-main {
+            min-width: 0;
+        }
+
+        .admin-header {
+            margin-bottom: 2rem;
+        }
+
+        .admin-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-header p {
+            color: var(--text-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: all var(--transition-base);
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .admin-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .data-table {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            overflow: hidden;
+        }
+
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table thead {
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .data-table th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(139, 92, 246, 0.05);
+        }
+
+        .data-table tr:hover {
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+
+        .badge-info {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+        }
+
+        .settings-form {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">MaqzBenz</div>
+            
+            <ul class="nav-links">
+                <li><a href="/index.html">Accueil</a></li>
+                <li><a href="/tech.html">Tech</a></li>
+                <li><a href="/sport.html">Sport</a></li>
+                <li><a href="/vacances.html">Vacances</a></li>
+                <li><a href="/map.html">Carte</a></li>
+                <li><a href="#" id="user-menu-container"></a></li>
+            </ul>
+            
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main style="margin-top: 80px;">
+        <div class="admin-container">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <h3>Admin Menu</h3>
+                <ul class="admin-nav">
+                    <li>
+                        <a href="#overview" class="admin-nav-link active" data-section="overview">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Vue d'ensemble</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#memories" class="admin-nav-link" data-section="memories">
+                            <i class="fas fa-images"></i>
+                            <span>Souvenirs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tours360" class="admin-nav-link" data-section="tours360">
+                            <i class="fas fa-street-view"></i>
+                            <span>Tours 360°</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings" class="admin-nav-link" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Paramètres</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="admin-main">
+                <!-- Overview Section -->
+                <section id="overview" class="admin-section active">
+                    <div class="admin-header">
+                        <h1>Vue d'ensemble</h1>
+                        <p>Tableau de bord administrateur - Statistiques et données du portfolio</p>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: rgba(139, 92, 246, 0.2); color: var(--accent-primary);">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div class="stat-value">156</div>
+                            <div class="stat-label">Souvenirs Totaux</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: rgba(236, 72, 153, 0.2); color: var(--accent-pink);">
+                                <i class="fas fa-street-view"></i>
+                            </div>
+                            <div class="stat-value">42</div>
+                            <div class="stat-label">Tours 360°</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: rgba(59, 130, 246, 0.2); color: #3b82f6;">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-value">1,247</div>
+                            <div class="stat-label">Visiteurs (30j)</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-value">+23%</div>
+                            <div class="stat-label">Croissance</div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <h2 style="margin-bottom: 1.5rem;">Activité Récente</h2>
+                        <div class="data-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                        <th>Type</th>
+                                        <th>Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2024-01-15 14:32</td>
+                                        <td>Ajout souvenir "Alpes Suisses"</td>
+                                        <td><span class="badge badge-info">Vacances</span></td>
+                                        <td><span class="badge badge-success">Publié</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2024-01-14 09:15</td>
+                                        <td>Upload vidéo 360° "Parcours VTT"</td>
+                                        <td><span class="badge badge-warning">Sport</span></td>
+                                        <td><span class="badge badge-success">Publié</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2024-01-13 16:45</td>
+                                        <td>Mise à jour setup gaming</td>
+                                        <td><span class="badge badge-info">Tech</span></td>
+                                        <td><span class="badge badge-success">Publié</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Memories Section -->
+                <section id="memories" class="admin-section">
+                    <div class="admin-header">
+                        <h1>Gestion des Souvenirs</h1>
+                        <p>Gérez vos souvenirs, photos et vidéos</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('Fonctionnalité en développement')">
+                                <i class="fas fa-plus"></i> Ajouter un souvenir
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Titre</th>
+                                    <th>Localisation</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="memories-table">
+                                <tr>
+                                    <td>Alpes Suisses</td>
+                                    <td>Zermatt, Suisse</td>
+                                    <td><span class="badge badge-info">Vacances</span></td>
+                                    <td>15/01/2024</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon btn-outline" title="Modifier">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-icon btn-outline" title="Supprimer">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tokyo Night</td>
+                                    <td>Shibuya, Japon</td>
+                                    <td><span class="badge badge-info">Vacances</span></td>
+                                    <td>10/01/2024</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon btn-outline" title="Modifier">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-icon btn-outline" title="Supprimer">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Côte d'Azur</td>
+                                    <td>Nice, France</td>
+                                    <td><span class="badge badge-info">Vacances</span></td>
+                                    <td>05/01/2024</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon btn-outline" title="Modifier">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-icon btn-outline" title="Supprimer">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Tours 360 Section -->
+                <section id="tours360" class="admin-section">
+                    <div class="admin-header">
+                        <h1>Gestion des Tours 360°</h1>
+                        <p>Gérez vos vidéos et parcours 360°</p>
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="alert('Fonctionnalité en développement')">
+                                <i class="fas fa-plus"></i> Ajouter un tour 360°
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="data-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Type</th>
+                                    <th>Durée</th>
+                                    <th>Date</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tours-table">
+                                <tr>
+                                    <td>Parcours VTT Montagne</td>
+                                    <td><span class="badge badge-warning">Sport</span></td>
+                                    <td>42:15</td>
+                                    <td>14/01/2024</td>
+                                    <td><span class="badge badge-success">Publié</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon btn-outline" title="Voir">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-icon btn-outline" title="Modifier">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-icon btn-outline" title="Supprimer">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Course Urbaine Paris</td>
+                                    <td><span class="badge badge-warning">Sport</span></td>
+                                    <td>28:30</td>
+                                    <td>12/01/2024</td>
+                                    <td><span class="badge badge-success">Publié</span></td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-icon btn-outline" title="Voir">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-icon btn-outline" title="Modifier">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-icon btn-outline" title="Supprimer">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings" class="admin-section">
+                    <div class="admin-header">
+                        <h1>Paramètres</h1>
+                        <p>Configuration du site et préférences</p>
+                    </div>
+
+                    <div class="settings-form">
+                        <h3 style="margin-bottom: 1.5rem;">Informations Générales</h3>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Nom du Site</label>
+                            <input type="text" class="form-input" value="MaqzBenz Portfolio" placeholder="Nom du site">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-input" placeholder="Description du site">Portfolio personnel - Tech, Sport & Voyages</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email de Contact</label>
+                            <input type="email" class="form-input" value="contact@maqzbenz.com" placeholder="email@example.com">
+                        </div>
+
+                        <h3 style="margin-top: 2rem; margin-bottom: 1.5rem;">Réseaux Sociaux</h3>
+
+                        <div class="form-group">
+                            <label class="form-label">GitHub</label>
+                            <input type="text" class="form-input" placeholder="https://github.com/username">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Twitter</label>
+                            <input type="text" class="form-input" placeholder="https://twitter.com/username">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Instagram</label>
+                            <input type="text" class="form-input" placeholder="https://instagram.com/username">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">LinkedIn</label>
+                            <input type="text" class="form-input" placeholder="https://linkedin.com/in/username">
+                        </div>
+
+                        <div style="margin-top: 2rem;">
+                            <button class="btn btn-primary" onclick="alert('Paramètres sauvegardés!')">
+                                <i class="fas fa-save"></i> Sauvegarder les paramètres
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MaqzBenz</h4>
+                <p style="color: var(--text-secondary);">Portfolio personnel - Tech, Sport & Voyages</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="/index.html">Accueil</a></li>
+                    <li><a href="/tech.html">Tech</a></li>
+                    <li><a href="/sport.html">Sport</a></li>
+                    <li><a href="/vacances.html">Vacances</a></li>
+                    <li><a href="/map.html">Carte</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:contact@maqzbenz.com">contact@maqzbenz.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> MaqzBenz. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/admin.js"></script>
+    <script>
+        // Initialize user menu
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check admin authentication
+            if (typeof MaqzbenzWeb !== 'undefined' && MaqzbenzWeb.Auth) {
+                const user = MaqzbenzWeb.Auth.getCurrentUser();
+                if (!user || user.role !== 'admin') {
+                    alert('Accès non autorisé. Redirection vers la page de connexion.');
+                    window.location.href = '/login.html';
+                    return;
+                }
+            }
+
+            // Initialize user menu
+            const container = document.getElementById('user-menu-container');
+            if (container) {
+                new MaqzbenzWeb.UserMenu(container);
+            }
+
+            // Navigation between sections
+            const navLinks = document.querySelectorAll('.admin-nav-link');
+            const sections = document.querySelectorAll('.admin-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const sectionId = link.dataset.section;
+                    
+                    // Update active link
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    
+                    // Show selected section
+                    sections.forEach(section => {
+                        if (section.id === sectionId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

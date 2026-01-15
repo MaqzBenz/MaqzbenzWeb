@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio personnel de MaqzBenz - Passionné de tech et de sport">
+    <title>MaqzBenz - Portfolio Personnel</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">MaqzBenz</div>
+            
+            <ul class="nav-links">
+                <li><a href="/index.html">Accueil</a></li>
+                <li><a href="/tech.html">Tech</a></li>
+                <li><a href="/sport.html">Sport</a></li>
+                <li><a href="/vacances.html">Vacances</a></li>
+                <li><a href="/map.html">Carte</a></li>
+                <li><a href="#" id="user-menu-container"></a></li>
+            </ul>
+            
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Bienvenue sur mon portfolio</h1>
+                <p>Passionné de technologie, de sport et de voyages. Découvrez mon univers à travers mes équipements, mes aventures et mes souvenirs.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem;">
+                    <a href="/map.html" class="btn btn-primary">
+                        <i class="fas fa-map-marked-alt"></i> Voir la carte des souvenirs
+                    </a>
+                    <a href="/tech.html" class="btn btn-secondary">
+                        <i class="fas fa-desktop"></i> Mon setup tech
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center mb-xl">À propos</h2>
+                <div class="grid grid-3">
+                    <div class="card fade-in-up">
+                        <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">
+                            <i class="fas fa-gamepad" style="color: var(--accent-primary);"></i>
+                        </div>
+                        <h3 class="card-title text-center">Gaming</h3>
+                        <p class="card-description">Setup gaming haut de gamme avec PC custom, écrans 4K et périphériques RGB. Découvrez tout mon matériel.</p>
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <a href="/tech.html" class="btn btn-outline">Voir le setup</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in-up" style="animation-delay: 0.1s;">
+                        <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">
+                            <i class="fas fa-running" style="color: var(--accent-primary);"></i>
+                        </div>
+                        <h3 class="card-title text-center">Sport</h3>
+                        <p class="card-description">Passionné de vélo et de course à pied. Équipements sportifs et parcours avec caméra 360° et données GPX.</p>
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <a href="/sport.html" class="btn btn-outline">Voir l'équipement</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card fade-in-up" style="animation-delay: 0.2s;">
+                        <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">
+                            <i class="fas fa-plane-departure" style="color: var(--accent-primary);"></i>
+                        </div>
+                        <h3 class="card-title text-center">Voyages</h3>
+                        <p class="card-description">Mes aventures à travers le monde. Photos, vidéos et souvenirs géolocalisés sur une carte interactive.</p>
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <a href="/map.html" class="btn btn-outline">Voir la carte</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section" style="background: var(--bg-secondary);">
+            <div class="container">
+                <h2 class="text-center mb-xl">Fonctionnalités</h2>
+                <div class="grid grid-2">
+                    <div class="card fade-in-up">
+                        <h3 class="card-title">
+                            <i class="fas fa-map-marked-alt" style="color: var(--accent-primary);"></i>
+                            Carte Interactive
+                        </h3>
+                        <p class="card-description">Explorez mes souvenirs sur une carte interactive style Snap Map. Filtrez par année, type ou destination.</p>
+                    </div>
+                    
+                    <div class="card fade-in-up" style="animation-delay: 0.1s;">
+                        <h3 class="card-title">
+                            <i class="fas fa-street-view" style="color: var(--accent-primary);"></i>
+                            Viewer 360°
+                        </h3>
+                        <p class="card-description">Revivez mes parcours sportifs en vidéo 360° synchronisée avec les données GPS et les statistiques en temps réel.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="mb-lg">Explorez mes aventures</h2>
+                <p class="mb-xl" style="font-size: 1.25rem; color: var(--text-secondary);">
+                    Découvrez mes souvenirs géolocalisés, mes parcours sportifs et mon équipement tech
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/map.html" class="btn btn-primary">
+                        <i class="fas fa-map"></i> Carte des souvenirs
+                    </a>
+                    <a href="/vacances.html" class="btn btn-secondary">
+                        <i class="fas fa-images"></i> Galerie photos
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MaqzBenz</h4>
+                <p style="color: var(--text-secondary);">Portfolio personnel - Tech, Sport & Voyages</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="/index.html">Accueil</a></li>
+                    <li><a href="/tech.html">Tech</a></li>
+                    <li><a href="/sport.html">Sport</a></li>
+                    <li><a href="/vacances.html">Vacances</a></li>
+                    <li><a href="/map.html">Carte</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:contact@maqzbenz.com">contact@maqzbenz.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> MaqzBenz. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/auth.js"></script>
+    <script>
+        // Initialize user menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('user-menu-container');
+            if (container) {
+                new MaqzbenzWeb.UserMenu(container);
+            }
+        });
+    </script>
+</body>
+</html>
