@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mon setup gaming et équipement tech - MaqzBenz">
+    <title>Mon Setup Gaming - MaqzBenz</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/logo.svg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">MaqzBenz</div>
+            
+            <ul class="nav-links">
+                <li><a href="/index.html">Accueil</a></li>
+                <li><a href="/tech.html" class="active">Tech</a></li>
+                <li><a href="/sport.html">Sport</a></li>
+                <li><a href="/vacances.html">Vacances</a></li>
+                <li><a href="/map.html">Carte</a></li>
+                <li><a href="#" id="user-menu-container"></a></li>
+            </ul>
+            
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Mon Setup Gaming</h1>
+                <p>Découvrez mon équipement tech et gaming. PC custom, périphériques haut de gamme et setup optimisé pour les performances.</p>
+            </div>
+        </section>
+
+        <!-- Tech Equipment Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center mb-xl">Équipement Tech</h2>
+                
+                <div class="grid grid-3">
+                    <!-- PC Card -->
+                    <div class="card fade-in-up">
+                        <div class="card-image" style="background: linear-gradient(135deg, #8b5cf6, #ec4899); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-desktop" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">PC Gaming Custom</h3>
+                        <p class="card-description">
+                            Configuration haute performance avec processeur dernière génération, carte graphique RTX et refroidissement watercooling RGB.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary); margin-right: 0.5rem;">
+                                <i class="fas fa-microchip"></i> RTX 4090
+                            </span>
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-memory"></i> 64GB RAM
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Monitor 1 Card -->
+                    <div class="card fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-tv" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Écran Principal 4K</h3>
+                        <p class="card-description">
+                            Moniteur 32" 4K 144Hz avec technologie IPS, HDR10 et temps de réponse 1ms pour une expérience gaming immersive.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-expand"></i> 32" 4K 144Hz
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Monitor 2 Card -->
+                    <div class="card fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #4f46e5, #6366f1); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-desktop" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Écran Secondaire</h3>
+                        <p class="card-description">
+                            Moniteur vertical 27" 1440p pour le multitâche, parfait pour Discord, navigateur et streaming.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-sync-alt"></i> 27" 1440p
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Keyboard Card -->
+                    <div class="card fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #ec4899, #f97316); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-keyboard" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Clavier Mécanique</h3>
+                        <p class="card-description">
+                            Clavier gaming mécanique 65% avec switches Cherry MX Red, RGB personnalisable et keycaps premium.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-bolt"></i> Cherry MX
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Mouse Card -->
+                    <div class="card fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #f97316, #eab308); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-mouse" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Souris Gaming</h3>
+                        <p class="card-description">
+                            Souris sans fil ultra-légère avec capteur optique 25000 DPI, 8 boutons programmables et autonomie 70h.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-crosshairs"></i> 25000 DPI
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Headset Card -->
+                    <div class="card fade-in-up" style="animation-delay: 0.5s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #8b5cf6, #6366f1); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-headphones" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Casque Audio</h3>
+                        <p class="card-description">
+                            Casque gaming sans fil avec son surround 7.1, micro antibruit et coussinets à mémoire de forme pour un confort optimal.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-volume-up"></i> 7.1 Surround
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Microphone Card -->
+                    <div class="card fade-in-up" style="animation-delay: 0.6s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #06b6d4, #3b82f6); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-microphone" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Microphone Studio</h3>
+                        <p class="card-description">
+                            Microphone USB condensateur pour streaming et enregistrement, avec filtre anti-pop et bras articulé.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-podcast"></i> Streaming
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Webcam Card -->
+                    <div class="card fade-in-up" style="animation-delay: 0.7s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-video" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Webcam 4K</h3>
+                        <p class="card-description">
+                            Webcam 4K 60fps avec autofocus, correction de luminosité automatique et microphones stéréo intégrés.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-camera"></i> 4K 60fps
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Chair Card -->
+                    <div class="card fade-in-up" style="animation-delay: 0.8s;">
+                        <div class="card-image" style="background: linear-gradient(135deg, #10b981, #06b6d4); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-chair" style="font-size: 4rem; color: white;"></i>
+                        </div>
+                        <h3 class="card-title">Chaise Gaming</h3>
+                        <p class="card-description">
+                            Fauteuil ergonomique avec support lombaire, accoudoirs 4D réglables et mécanisme d'inclinaison jusqu'à 180°.
+                        </p>
+                        <div style="margin-top: 1rem;">
+                            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(139, 92, 246, 0.2); border-radius: 1rem; font-size: 0.875rem; color: var(--accent-primary);">
+                                <i class="fas fa-star"></i> Ergonomique
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup Info Section -->
+        <section class="section" style="background: var(--bg-secondary);">
+            <div class="container">
+                <h2 class="text-center mb-xl">Spécifications Complètes</h2>
+                <div class="grid grid-2">
+                    <div class="card">
+                        <h3 class="card-title">
+                            <i class="fas fa-cog" style="color: var(--accent-primary);"></i>
+                            Configuration PC
+                        </h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2;">
+                            <li><i class="fas fa-microchip" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> Processeur: Intel i9-13900K / AMD Ryzen 9 7950X</li>
+                            <li><i class="fas fa-memory" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> RAM: 64GB DDR5 6000MHz</li>
+                            <li><i class="fas fa-hdd" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> Stockage: 2TB NVMe SSD + 4TB HDD</li>
+                            <li><i class="fas fa-plug" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> Alimentation: 1000W 80+ Platinum</li>
+                            <li><i class="fas fa-fan" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> Refroidissement: Watercooling AIO 360mm</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">
+                            <i class="fas fa-palette" style="color: var(--accent-primary);"></i>
+                            Périphériques & Accessoires
+                        </h3>
+                        <ul style="list-style: none; color: var(--text-secondary); line-height: 2;">
+                            <li><i class="fas fa-lightbulb" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> Éclairage RGB synchronisé</li>
+                            <li><i class="fas fa-tablet-alt" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> Tablette graphique pour design</li>
+                            <li><i class="fas fa-gamepad" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> Manettes PS5 & Xbox Series</li>
+                            <li><i class="fas fa-vr-cardboard" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> Casque VR Meta Quest 3</li>
+                            <li><i class="fas fa-network-wired" style="color: var(--accent-primary); margin-right: 0.5rem;"></i> Connexion Ethernet 10Gbps</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>MaqzBenz</h4>
+                <p style="color: var(--text-secondary);">Portfolio personnel - Tech, Sport & Voyages</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="/index.html">Accueil</a></li>
+                    <li><a href="/tech.html">Tech</a></li>
+                    <li><a href="/sport.html">Sport</a></li>
+                    <li><a href="/vacances.html">Vacances</a></li>
+                    <li><a href="/map.html">Carte</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:contact@maqzbenz.com">contact@maqzbenz.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> MaqzBenz. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/auth.js"></script>
+    <script>
+        // Initialize user menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('user-menu-container');
+            if (container) {
+                new MaqzbenzWeb.UserMenu(container);
+            }
+        });
+    </script>
+</body>
+</html>
