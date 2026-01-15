@@ -133,14 +133,16 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Redirect if already authenticated
-            if (auth.isAuthenticated()) {
+            if (window.auth && auth.isAuthenticated()) {
                 window.location.href = auth.getReturnUrl();
                 return;
             }
             
             // Initialize login form
             const form = document.getElementById('login-form');
-            new MaqzbenzWeb.LoginForm(form);
+            if (window.MaqzbenzWeb && MaqzbenzWeb.LoginForm) {
+                new MaqzbenzWeb.LoginForm(form);
+            }
         });
     </script>
 </body>

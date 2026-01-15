@@ -269,7 +269,7 @@ class MemoryMap {
             }
 
             // Visibility filter (only apply if not admin)
-            if (!auth.isAdmin() && memory.visibility === 'private') {
+            if ((!window.auth || !auth.isAdmin()) && memory.visibility === 'private') {
                 return false;
             }
 
@@ -313,12 +313,14 @@ class MemoryMap {
 
         // Add memory button (admin only)
         const addMemoryBtn = document.querySelector('.add-memory-fab');
-        if (addMemoryBtn && auth.isAdmin()) {
-            addMemoryBtn.addEventListener('click', () => {
-                this.showAddMemoryModal();
-            });
-        } else if (addMemoryBtn) {
-            addMemoryBtn.style.display = 'none';
+        if (addMemoryBtn) {
+            if (window.auth && auth.isAdmin()) {
+                addMemoryBtn.addEventListener('click', () => {
+                    this.showAddMemoryModal();
+                });
+            } else {
+                addMemoryBtn.style.display = 'none';
+            }
         }
     }
 

@@ -11,7 +11,7 @@ class AdminDashboard {
 
     async init() {
         // Check admin auth
-        if (!auth.requireAdmin()) {
+        if (!window.auth || !auth.requireAdmin()) {
             return;
         }
 
